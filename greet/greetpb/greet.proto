@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package greet;
+option go_package="greetpb";
+
+service Greeting {
+    // // Unary 
+    // rpc Greet (GreetRequest) returns (GreetResponse) {};
+
+    // // Streaming Server
+    // // Response from server as a stream
+    // rpc GreetManyTimes (GreetManyTimesRequest) returns (stream GreetManyTimesResponse) {};
+
+    // // Streaming Client
+    // // Request from client is a stream
+    // rpc LongGreet (stream LongGreetRequest) returns (LongGreetResponse) {};
+
+    // // Bi-directional Streaming
+    // // Both client or server send a stream
+    // rpc GreetEveryone (stream GreetEveryoneRequest) returns (stream GreetEveryoneResponse) {};
+}
