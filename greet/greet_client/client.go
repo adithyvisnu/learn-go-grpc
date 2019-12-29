@@ -1,6 +1,8 @@
 package main
 
 import (
+	"context"
+
 	"github.com/adithyvisnu/learn-go-grpc/greet/greetpb"
 	"google.golang.org/grpc"
 )
@@ -15,6 +17,19 @@ func main() {
 
 	defer connection.Close()
 
-	client := greetpb.NewGreetingClient(connection)
-	println(client)
+	client := greetpb.NewGreetingServiceClient(connection)
+	response, err := client.Greet(
+		context.Background(),
+		&greetpb.GreetRequest{
+			Greeting: &greetpb.Greeting{
+				FirstName: "Adithya Visnu",
+				LastName:  "Prasetyo Putra",
+			},
+		},
+	)
+	if err != nil {
+		println(err)
+	}
+
+	println("Response: ", response.GetMessage())
 }
